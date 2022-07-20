@@ -99,3 +99,5 @@ SERVER_TRAFFIC_SECRET_0 <client_random> <server_traffic_secret>
 - [K05822509: Decrypting HTTP/3 over QUIC with Wireshark](https://support.f5.com/csp/article/K05822509) - decrypts not all flows
 - [dev/central: Decrypting TLS traffic on BIG-IP](https://devcentral.f5.com/s/articles/Decrypting-TLS-traffic-on-BIG-IP) - does not work for TLS 1.3
 - [Decrypt with tcpdump --f5 ssl](https://clouddocs.f5.com/training/community/adc/html/class4/module1/lab10.html) - does not work for TLS 1.3
+- [Decrypt SSL with iRule](https://clouddocs.f5.com/training/community/adc/html/class4/module1/lab12.html#decrypt-ssl-with-irule)
+- [Decrypting TLS traffic on BIG-IP](https://community.f5.com/t5/technical-articles/decrypting-tls-traffic-on-big-ip/ta-p/280936)
