@@ -73,7 +73,7 @@ F5 Ethernet Trailer Protocol
 1.3APPS:<server_traffic_secret>
 ```
 
-## ssl-secrets.log format
+## .pms file format
 
 ### TLS < 1.3
 
