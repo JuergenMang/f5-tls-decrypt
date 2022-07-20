@@ -2,6 +2,8 @@
 
 This repository provides a script that creates a pre master-secret log file for Wireshark to decrypt TLS traffic. It works with all TLS versions even TLSv1.3 traffic could be decrypted hassle-free.
 
+You do not need to change any tls oder cipher settings or have access to private keys. It should work out of the box.
+
 The `gensecrets-tls.pl` script extracts the tls session keys from a tcpdump written by the F5 sslprovider. Therefore the dump and the script must be executed on the f5 itself.
 
 - The script handles any number of TLS flows and autodetecs the TLS versions.
