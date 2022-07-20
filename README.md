@@ -6,7 +6,7 @@ The `gensecrets-tls.pl` script extracts the tls session keys from a tcpdump writ
 
 - The script handles any number of TLS flows and autodetecs the TLS versions.
 - The dump must include the complete tls handshakes.
-- The gensecrets-tls.pl works only with F5 v15 or above (special tcpdump version).
+- The `gensecrets-tls.pl` works only with F5 v15 or above (special tcpdump version).
 
 ## Dump
 
