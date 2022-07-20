@@ -22,7 +22,7 @@ The `gensecrets-tls.pl` script extracts the tls session keys from a tcpdump writ
 
 1. Enable F5 TLS (Analyze → Enabled Protocols)
 2. Configure `dump.pms` as (Pre-)Master-Secret log filename (Edit → Preferences → Protocols → TLS → (Pre)-Master-Secret log filename)
-3. TLS Traffic should now be decrypted (Application data Pakete are shown in cleartext)
+3. TLS Traffic should now be decrypted (formerly application data packets are shown in cleartext)
 
 ## F5 SSL provider format
 
