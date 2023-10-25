@@ -34,8 +34,6 @@ tmsh modify /sys db tm.rstcause.pkt value enable
 echo "Enabling f5 sslprovider"
 tmsh modify sys db tcpdump.sslprovider value enable
 
-echo "Enabling ssl debug"
-tmsh modify /sys db log.ssl.level value Debug
 echo "Starting tcpdump, press Ctrl+C to quit"
 
 #Run tcpdump
@@ -58,4 +56,4 @@ echo "Generating pre master secret file"
 
 echo "Dump directory: $TMPDIR"
 
-exit 0;
+exit 0
