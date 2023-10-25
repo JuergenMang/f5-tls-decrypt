@@ -47,9 +47,6 @@ tmsh modify /sys db tm.rstcause.pkt value disable
 echo "Disabling f5 sslprovider"
 tmsh modify sys db tcpdump.sslprovider value disable
 
-echo "Disabling ssl debug"
-tmsh modify /sys db log.ssl.level value Warning
-
 #Create pre master secret file
 echo "Generating pre master secret file"
 "$GENSECRETS" "$TMPDIR/dump.pcap" > "$TMPDIR/dump.pms"

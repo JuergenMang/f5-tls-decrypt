@@ -11,12 +11,29 @@ The `gensecrets-tls.pl` script extracts the tls session keys from a tcpdump writ
 ## Dump
 
 1. Enable ssl provider: `tmsh modify sys db tcpdump.sslprovider value enable`
-2. Run tcpdump: `tcpdump -nni 0.0:nnnp -s0 --f5 ssl:v -vvv -w /tmp/dump.pcap <filter>`
+2. Run tcpdump: `tcpdump -nni 0.0:nnnp -s0 --f5 ssl:v -vvv -w /tmp/dump.pcap <tcpdump filter>`
 3. Disable ssl provider: `tmsh modify sys db tcpdump.sslprovider value disable`
 
 ### Create the PMS file
 
 1. Extract session secrets from dump: `./gensecrets-tls.pl /tmp/dump.pcap > /tmp/dump.pms`
+2. STDERR output should indicate found tls streams and its versions
+
+## Or use startdump script
+
+The `startdump.sh` script does:
+
+- Creates a temporary folder in `/var/tmp/`
+- Enable the ssl provier
+- Enable rst cause logging
+- Runs tcpdump
+- Disables the ssl provider
+- Disables rst cause logging
+- Creates the pms file
+
+```
+./startdump.sh <tcpdump filter>
+```
 
 ## Wireshark
 
