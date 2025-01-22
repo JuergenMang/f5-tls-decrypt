@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Date:   2025-01-22
+# Date: 2025-01-22
 # Author: Juergen Mang <juergen.mang@axians.de>
 
 if [ $# -eq 0 ]
@@ -8,7 +8,7 @@ then
     echo "Usage: $(basename "$0") <tcpdump filter>";
     echo ""
     echo "This script enables (SSL) debug options, runs tcpdump and creates a pre master secret file."
-    exit 1;
+    exit 1
 fi
 
 # Try to find the gensecrets-tls.pl script
@@ -20,7 +20,11 @@ do
     [ -x "$L" ] && { GENSECRETS="$L"; break; }
 done
 
-[ "$GENSECRETS" = "" ] && { echo "gensecrets-tls.pl not found"; exit 1; }
+if [ "$GENSECRETS" = "" ]
+then
+    echo "gensecrets-tls.pl not found"
+    exit 1
+fi
 
 # Create tmp directory
 TMPDIR=$(mktemp -d /var/tmp/dump.XXXXXXXXXX)
@@ -33,9 +37,8 @@ tmsh modify /sys db tm.rstcause.pkt value enable
 echo "Enabling f5 sslprovider"
 tmsh modify sys db tcpdump.sslprovider value enable
 
-echo "Starting tcpdump, press Ctrl+C to quit"
-
 # Run tcpdump
+echo "Starting tcpdump, press Ctrl+C to quit"
 # shellcheck disable=SC2068
 tcpdump -nni 0.0:nnnp -s0 --f5 ssl:v -vvv -w "$TMPDIR/dump.pcap" ${@}
 
@@ -60,6 +63,6 @@ else
     echo "editcap is too old, you must manually configure the PMS-File in WireShark"
 fi
 
+# Finished
 echo "Dump directory: $TMPDIR"
-
 exit 0
