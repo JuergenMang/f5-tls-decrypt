@@ -7,7 +7,7 @@ if [ $# -eq 0 ]
 then
     echo "Usage: $(basename "$0") <tcpdump filter>";
     echo ""
-    echo "This script enables (SSL) debug options, runs tcpdump and creates a pre master secret file."
+    echo "This script enables rstcause logging and tcpdump.sslprovider, runs tcpdump and creates a pre master secret file."
     exit 1
 fi
 
