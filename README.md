@@ -33,7 +33,7 @@ The `startdump.sh` script does:
 - Disables the ssl provider
 - Disables rst cause logging
 - Creates the pms file (`dump.pms`)
-- Injects the extracted secrets in the dump (`dump-decrypted.pcap`).
+- Injects the extracted secrets in the dump (`dump-decrypted.pcap`) - only available in F5 17.1.1.1 and above.
 
 ```sh
 ./startdump.sh <tcpdump filter>
@@ -41,7 +41,14 @@ The `startdump.sh` script does:
 
 ## Wireshark
 
+### For F5 17.1.1.1 and above
+
 Open `dump-decrypted.pcap`.
+
+### For older Versions
+
+1. Configure `dump.pms` as (Pre-)Master-Secret log filename (Edit → Preferences → Protocols → TLS → (Pre)-Master-Secret log filename)
+2. TLS Traffic should now be decrypted (formerly application data packets are shown in cleartext)
 
 ## F5 SSL provider format
 
@@ -109,6 +116,7 @@ SERVER_HANDSHAKE_TRAFFIC_SECRET <client_random> <server_handshake_secret>
 CLIENT_TRAFFIC_SECRET_0 <client_random> <client_traffic_secret>
 SERVER_TRAFFIC_SECRET_0 <client_random> <server_traffic_secret>
 ```
+
 `<client_random>` is always the same
 
 ## References
