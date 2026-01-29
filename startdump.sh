@@ -31,8 +31,9 @@ TMPDIR=$(mktemp -d /var/tmp/dump.XXXXXXXXXX)
 
 # Enable debug options
 echo "Enabling rstcause logging"
-tmsh modify /sys db tm.rstcause.log value enable
-tmsh modify /sys db tm.rstcause.pkt value enable
+tmsh modify sys db tm.rstcause.log value enable
+tmsh modify sys db tm.rstcause.pkt value enable
+tmsh modify sys db tmm.http2.sendrstwhy value "true"
 
 echo "Enabling f5 sslprovider"
 tmsh modify sys db tcpdump.sslprovider value enable
@@ -44,8 +45,9 @@ tcpdump -nni 0.0:nnnp -s0 --f5 ssl:v -vvv -w "$TMPDIR/dump.pcap" ${@}
 
 # Disable debug options
 echo "Disabling rstcause logging"
-tmsh modify /sys db tm.rstcause.log value disable
-tmsh modify /sys db tm.rstcause.pkt value disable
+tmsh modify sys db tm.rstcause.log value disable
+tmsh modify sys db tm.rstcause.pkt value disable
+tmsh modify sys db tmm.http2.sendrstwhy value "false"
 
 echo "Disabling f5 sslprovider"
 tmsh modify sys db tcpdump.sslprovider value disable
